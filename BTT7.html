@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tính tổng mảng</title>
+</head>
+<body>
+  <h3>Tính tổng mảng</h3>
+  <p>Mảng: [1, 5, 10, 2]</p>
+  <p>Tổng: <span id="sum-output"></span></p>
+
+  <script>
+    const numbers = [1, 5, 10, 2];
+    const sum = numbers.reduce((acc, current) => acc + current, 0);
+    document.getElementById("sum-output").textContent = sum;
+  </script>
+</body>
+</html>

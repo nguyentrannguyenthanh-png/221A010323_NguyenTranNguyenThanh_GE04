@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bảng cửu chương</title>
+  <style>
+    #table-output {
+      white-space: pre-line; /* Giữ xuống dòng */
+      font-family: monospace;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h3>Tạo bảng cửu chương</h3>
+  <label for="number">Nhập số: </label>
+  <input type="number" id="number" value="7">
+  <button onclick="generateMultiplicationTable()">Hiển thị</button>
+
+  <div id="table-output"></div>
+
+  <script>
+    function generateMultiplicationTable() {
+      const n = document.getElementById("number").value;
+      let output = "";
+      for (let i = 1; i <= 10; i++) {
+        output += `${n} x ${i} = ${n * i}\n`;
+      }
+      document.getElementById("table-output").textContent = output;
+    }
+  </script>
+</body>
+</html>
