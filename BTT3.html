@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Lọc danh sách</title>
+  <style>
+    #search {
+      margin-bottom: 10px;
+      padding: 5px;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="search" placeholder="Tìm kiếm..." onkeyup="filterList()">
+
+  <ul id="my-list">
+    <li>Táo</li>
+    <li>Cam</li>
+    <li>Xoài</li>
+    <li>Nho</li>
+    <li>Chuối</li>
+  </ul>
+
+  <script>
+    function filterList() {
+      const filter = document.getElementById("search").value.toUpperCase();
+      const list = document.getElementById("my-list").getElementsByTagName("li");
+      for (let i = 0; i < list.length; i++) {
+        const text = list[i].textContent || list[i].innerText;
+        list[i].style.display = text.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+      }
+    }
+  </script>
+</body>
+</html>
