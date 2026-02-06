@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài tập TK8: Chuyển đổi màu Hex → RGB</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #color-box {
+      width: 100px;
+      height: 100px;
+      margin-top: 10px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <h2>Bài tập TK8: Chuyển đổi màu Hex → RGB</h2>
+  <input type="text" id="hex-input" placeholder="#FF0000 hoặc tên màu (blue)" value="#00FF00">
+  <button onclick="convertColor()">Chuyển đổi</button>
+  <p>Kết quả: <span id="rgb-output"></span></p>
+  <div id="color-box"></div>
+
+  <script>
+    function hexToRgb(hex) {
+      // Cho phép nhập tên màu CSS
+      const ctx = document.createElement("canvas").getContext("2d");
+      ctx.fillStyle = hex;
+      const computed = ctx.fillStyle; // Trả về dạng chuẩn (#rrggbb)
+
+      const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+      hex = computed.replace(shorthandRegex, function(m, r, g, b) {
+        return r + r + g + g + b + b;
+      });
+
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result
+        ? `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)})`
+        : null;
+    }
+
+    function convertColor() {
+      const hex = document.getElementById("hex-input").value;
+      const rgb = hexToRgb(hex);
+      document.getElementById("rgb-output").textContent = rgb;
+      document.getElementById("color-box").style.backgroundColor = rgb;
+    }
+  </script>
+</body>
+</html>
